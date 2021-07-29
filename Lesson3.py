@@ -65,8 +65,28 @@ print(my_func(43, 17, 22))
 """
 
 
-def my_func(x, y):
+def my_func_easy(x, y):
+    return x ** y
 
+
+def my_func_hard(x, y):
+    if y == 0:
+        return 1
+    if x == 0:
+        return "Ошибка деления на 0"
+    res: float = 1
+    step = float(1/x)
+    for cycle in range(0, abs(y)):
+        res *= step
+    return res
+
+
+# positive = int(input("Положительное: "))
+# negative = int(input("Отрицательное: "))
+positive = 2
+negative = -5
+print(my_func_easy(positive, negative))
+print(my_func_hard(positive, negative))
 
 """
 Программа запрашивает у пользователя строку чисел, разделённых пробелом. 
@@ -78,6 +98,10 @@ def my_func(x, y):
 то вначале нужно добавить сумму этих чисел к полученной ранее сумме 
 и после этого завершить программу.
 """
+
+print("Введите разделённые пробелом числа, Enter для подсчёта их суммы, Ё для выхода")
+string = input("Числа")
+
 """
 Реализовать функцию int_func(), принимающую слова из маленьких латинских букв 
 и возвращающую их же, но с прописной первой буквой. 
