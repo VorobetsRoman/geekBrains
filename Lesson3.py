@@ -65,7 +65,7 @@ print(my_func(43, 17, 22))
 """
 
 
-def my_func(x, y):
+# def my_func(x, y):
 
 
 """
@@ -83,6 +83,14 @@ def my_func(x, y):
 и возвращающую их же, но с прописной первой буквой. 
 Например, print(int_func(‘text’)) -> Text.
 """
+
+
+def int_func(val:str):
+    return val.capitalize()
+
+
+print(int_func("text"))
+
 """
 Продолжить работу над заданием. 
 В программу должна попадать строка из слов, разделённых пробелом. 
@@ -91,3 +99,13 @@ def my_func(x, y):
 но каждое слово должно начинаться с заглавной буквы. 
 Используйте написанную ранее функцию int_func().
 """
+
+def int_func2(val: str):
+    words = val.split()
+    newlist = []
+    for word in words:
+        newlist.append(int_func(word))
+    return ' '.join(newlist)
+
+
+print(int_func2("fuck'n shit"))
