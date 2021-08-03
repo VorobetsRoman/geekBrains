@@ -2,6 +2,8 @@
 Реализовать функцию, принимающую два числа (позиционные аргументы) и выполняющую их деление.
 Числа запрашивать у пользователя, предусмотреть обработку ситуации деления на ноль.
 """
+from _typeshed import SupportsLessThan
+from typing import Union, Any
 
 
 def division(val1, val2):
@@ -45,10 +47,10 @@ def user(fName, lName, birthYear, city, email, phone):
 
 def my_func(val1, val2, val3):
     arr = [val1, val2, val3]
-    valMax = max(arr)
-    del arr[arr.index(valMax)]
-    valSec = max(arr)
-    return valSec + valMax
+    val_max = max(arr)
+    del arr[arr.index(val_max)]
+    val_sec = max(arr)
+    return val_sec + val_max
 
 
 print(my_func(7, 8, 9))
@@ -109,7 +111,7 @@ string = input("Числа")
 """
 
 
-def int_func(val:str):
+def int_func(val: str):
     return val.capitalize()
 
 
@@ -124,9 +126,10 @@ print(int_func("text"))
 Используйте написанную ранее функцию int_func().
 """
 
+
 def int_func2(val: str):
     words = val.split()
-    newlist = []
+    newlist: []
     for word in words:
         newlist.append(int_func(word))
     return ' '.join(newlist)
