@@ -12,11 +12,24 @@
 Пример исходного списка: [300, 2, 12, 44, 1, 1, 4, 10, 7, 1, 78, 123, 55].
 Результат: [12, 44, 4, 10, 78, 123].
 """
+
+
+def new_list(oldlist):
+    newlist = [el for el in oldlist if el > oldlist[oldlist.index(el) - 1] and oldlist.index(el) > 1]
+    return newlist
+
+
+print(new_list([300, 2, 12, 44, 1, 1, 4, 10, 7, 1, 78, 123, 55]))
+
 """
 3.Для чисел в пределах от 20 до 240 найти числа, кратные 20 или 21.
 Решите задание в одну строку.
 Подсказка: используйте функцию range() и генератор.
 """
+
+print([el for el in range(20, 240) if el % 20 == 0 or el % 21 == 0])
+
+
 """
 4.Представлен список чисел. Определите элементы списка,
 не имеющие повторений. Сформируйте итоговый массив чисел,
@@ -26,6 +39,14 @@
 Пример исходного списка: [2, 2, 2, 7, 23, 1, 44, 44, 3, 2, 10, 7, 4, 11].
 Результат: [23, 1, 3, 10, 4, 11]
 """
+
+
+def unrepeated(sourcelist: list):
+    return [el for el in sourcelist if sourcelist.count(el) == 1]
+
+
+print(unrepeated([2, 2, 2, 7, 23, 1, 44, 44, 3, 2, 10, 7, 4, 11]))
+
 """
 5.Реализовать формирование списка, используя функцию range()
 и возможности генератора.
@@ -33,6 +54,17 @@
 Нужно получить результат вычисления произведения всех элементов списка.
 Подсказка: использовать функцию reduce().
 """
+
+
+def multiply(val1: int, val2: int):
+    return val1 * val2
+
+
+from functools import reduce
+print(reduce(multiply, [el for el in range(100, 1000 + 1) if el % 2 == 0]))
+print(reduce(multiply, [el for el in range(1, 6 + 1) if el % 2 == 0]))
+
+
 """
 6.Реализовать два небольших скрипта:
 итератор, генерирующий целые числа, начиная с указанного;
@@ -45,6 +77,30 @@
 Вторым пунктом необходимо предусмотреть условие,
 при котором повторение элементов списка прекратится.
 """
+
+
+def integers(start: int):
+    from itertools import count
+    for el in count(start):
+        if el > 10:
+            break
+        else:
+            print(el)
+
+
+def repeater(sourcelist: list, strings: int):
+    from itertools import cycle
+    stringcounter = 0
+    for el in cycle(sourcelist):
+        if stringcounter > strings:
+            break;
+        print(el)
+        stringcounter += 1
+
+
+integers(3)
+repeater("iddqd", 8)
+
 """
 7.Реализовать генератор с помощью функции с ключевым словом yield,
 создающим очередное значение.
@@ -55,3 +111,20 @@
 Подсказка: факториал числа n — произведение чисел от 1 до n.
 Например, факториал четырёх 4! = 1 * 2 * 3 * 4 = 24.
 """
+
+
+def fact(n: int):
+    outlist = []
+    lastvalue = 1
+    for val in range(1, n):
+        lastvalue *= val
+        list.append(lastvalue)
+    return outlist
+
+
+def generator(n: int):
+    for el in fact(n):
+        yield el
+
+
+print(fact(5))
